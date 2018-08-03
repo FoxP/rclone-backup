@@ -37,8 +37,8 @@ SET RCLONE_DIRECTORIES_TO_SYNC=Backups,Documents,Ebooks,Games,Movies,Music,Pictu
 SET RCLONE_ADDITIONAL_FLAGS=--delete-excluded
 ```
 - Edit your [filter file](https://rclone.org/filtering/) : `rclone-filters.txt`
-- Start `rclone-sync.bat` with proper rights
-- Enter your rclone config file (`rclone.conf`) password
+- Start `rclone-sync.bat` with your rclone config file (`rclone.conf`) password (as argument or not):
+`rclone-sync.bat your-Rclone-Config-Password`
 - Wait for rclone sync to complete
 
 ### 2. Mount remote as a mountpoint:
@@ -71,8 +71,8 @@ SET RCLONE_CONNECT_TIMEOUT=5s
 SET RCLONE_ADDITIONAL_FLAGS=--read-only
 ```
 - [WinFsp](http://www.secfs.net/winfsp/) must be installed
-- Start `rclone-mount.bat` with proper rights
-- Enter your rclone config file (`rclone.conf`) password
+- Start `rclone-mount.bat` with your rclone config file (`rclone.conf`) password (as argument or not):
+`rclone-mount.bat your-Rclone-Config-Password`
 - Remote is mounted as a mountpoint
 
 ### 3. Get quota information from the remote:

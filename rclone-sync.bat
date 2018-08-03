@@ -26,8 +26,13 @@ REM Console title
 TITLE rclone-sync
 
 ECHO.
-REM Ask for rclone config password
-SET /p RCLONE_CONFIG_PASSWORD="> Config password : "
+REM If password is not passed as argument
+IF [%1] == [] (
+	REM Ask for rclone config password
+	SET /p RCLONE_CONFIG_PASSWORD="> Config password : "
+) ELSE (
+	SET RCLONE_CONFIG_PASSWORD=%1
+)
 
 CLS
 
