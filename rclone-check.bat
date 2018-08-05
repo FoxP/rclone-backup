@@ -7,9 +7,9 @@ REM Doesn’t transfer unchanged files, testing by size and modification time or
 REM Configuration variables
 SET RCLONE_EXE_PATH="%~dp0rclone.exe"
 SET RCLONE_CONFIG_PATH="%~dp0rclone.conf"
-SET RCLONE_LOG_FILE_PATH="%~dp0rclone-sync-log.txt"
+SET RCLONE_LOG_FILE_PATH="%~dp0rclone-check-log.txt"
 REM Log level : DEBUG|INFO|NOTICE|ERROR (default NOTICE)
-SET RCLONE_LOG_LEVEL=INFO
+SET RCLONE_LOG_LEVEL=NOTICE
 REM Read exclude patterns from file
 SET RCLONE_FILTER_FILE_PATH="%~dp0rclone-filters.txt"
 REM Number of checkers to run in parallel (default 8)
@@ -33,7 +33,7 @@ SET RCLONE_ADDITIONAL_FLAGS=--delete-excluded
 REM Console height / width
 MODE 50,20 | ECHO off
 REM Console title
-TITLE rclone-sync
+TITLE rclone-check
 
 ECHO.
 REM If password is not passed as argument
@@ -47,7 +47,7 @@ IF [%1] == [] (
 CLS
 
 ECHO.
-ECHO ^> Sync :
+ECHO ^> Check :
 ECHO.
 
 SETLOCAL
@@ -56,7 +56,7 @@ SETLOCAL
 	FOR %%A IN (%RCLONE_DIRECTORIES_TO_SYNC%) DO (
 		ECHO  - %RCLONE_LOCAL_PATH%%%A -^> %RCLONE_REMOTE_PATH%%%A
 		@ECHO %date%;%time%;%%A;start>> %RCLONE_LOG_FILE_PATH%
-		%RCLONE_EXE_PATH% sync "%RCLONE_LOCAL_PATH%%%A" "%RCLONE_REMOTE_PATH%%%A" --config=%RCLONE_CONFIG_PATH% --exclude-from=%RCLONE_FILTER_FILE_PATH% %RCLONE_ADDITIONAL_FLAGS% --log-file=%RCLONE_LOG_FILE_PATH% --log-level %RCLONE_LOG_LEVEL% --transfers=%RCLONE_FILE_TRANSFERS_NUMBER% --checkers %RCLONE_CHECKERS_NUMBER% --low-level-retries %RCLONE_LOW_LEVEL_RETRIES_NUMBER% --retries %RCLONE_RETRIES_NUMBER% --retries-sleep %RCLONE_RETRIES_SLEEP%
+		%RCLONE_EXE_PATH% cryptcheck "%RCLONE_LOCAL_PATH%%%A" "%RCLONE_REMOTE_PATH%%%A" --config=%RCLONE_CONFIG_PATH% --exclude-from=%RCLONE_FILTER_FILE_PATH% %RCLONE_ADDITIONAL_FLAGS% --log-file=%RCLONE_LOG_FILE_PATH% --log-level %RCLONE_LOG_LEVEL% --transfers=%RCLONE_FILE_TRANSFERS_NUMBER% --checkers %RCLONE_CHECKERS_NUMBER% --low-level-retries %RCLONE_LOW_LEVEL_RETRIES_NUMBER% --retries %RCLONE_RETRIES_NUMBER% --retries-sleep %RCLONE_RETRIES_SLEEP%
 		@ECHO %date%;%time%;%%A;end>> %RCLONE_LOG_FILE_PATH%
 	)
 ENDLOCAL
