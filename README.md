@@ -92,8 +92,9 @@ SET RCLONE_ADDITIONAL_FLAGS=--read-only
 - Start `rclone-mount.bat` with your rclone config file (`rclone.conf`) password (as argument or not):  
 `rclone-mount.bat your-Rclone-Config-Password`
 - Remote is mounted as a mountpoint
+- Close console to unmount remote
 
-### 3. Checks the integrity of a crypted remote:
+### 3. Check the integrity of a crypted remote:
 Example:
 ```
 D:\                                         pCloudEncrypted:
