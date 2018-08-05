@@ -9,4 +9,4 @@
 # Windows Media Player Album Art
 AlbumArt*.jpg
 # rclone log file
-rclone-log.txt
+rclone-*-log.txt
