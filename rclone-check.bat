@@ -1,7 +1,5 @@
-REM Make source and dest identical, modifying destination only
-REM Destination is updated to match source, including deleting files if necessary
-REM If dest:path doesn’t exist, it is created and the source:path contents go there
-REM Doesn’t transfer unchanged files, testing by size and modification time or MD5SUM
+REM Checks the integrity of a crypted remote
+REM The underlying remote of the cryptedremote must support some kind of checksum
 @ECHO OFF
 
 REM Configuration variables
