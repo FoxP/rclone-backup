@@ -48,7 +48,7 @@ SET RCLONE_ADDITIONAL_FLAGS=--delete-excluded
 ```
 - Edit your [filter file](https://rclone.org/filtering/) : `rclone-filters.txt`
 - Start `rclone-sync.bat` with your rclone config file (`rclone.conf`) password (as argument or not):  
-`rclone-sync.bat your-Rclone-Config-Password`
+`rclone-sync.bat your-Rclone-Config-Password`  
 :bulb: Note that you can use the `shutdown` or `hibernate` argument to shutdown / hibernate after sync:  
 `rclone-sync.bat your-Rclone-Config-Password shutdown`
 - Wait for rclone sync to complete
@@ -140,7 +140,7 @@ SET RCLONE_ADDITIONAL_FLAGS=--delete-excluded
 ```
 - Edit your [filter file](https://rclone.org/filtering/) : `rclone-filters.txt`
 - Start `rclone-check.bat` with your rclone config file (`rclone.conf`) password (as argument or not):  
-`rclone-check.bat your-Rclone-Config-Password`
+`rclone-check.bat your-Rclone-Config-Password`  
 :bulb: Note that you can use the `shutdown` or `hibernate` argument to shutdown / hibernate after check:  
 `rclone-check.bat your-Rclone-Config-Password shutdown`
 - Wait for rclone cryptcheck to complete
