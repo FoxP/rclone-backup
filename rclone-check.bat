@@ -24,7 +24,7 @@ REM Paths
 SET RCLONE_LOCAL_PATH=D:\
 SET RCLONE_REMOTE_PATH=pCloudEncrypted:
 REM Local directory names to sync, comma separated
-SET RCLONE_DIRECTORIES_TO_SYNC=Backups,Documents,Ebooks,Games,Movies,Music,Pictures,Softwares
+SET RCLONE_DIRECTORIES_TO_SYNC=Backups,Documents,Ebooks,Games,Movies,Music,Phone,Pictures,Softwares
 REM Additional rclone flags
 SET RCLONE_ADDITIONAL_FLAGS=--delete-excluded
 
@@ -40,6 +40,14 @@ IF [%1] == [] (
 	SET /p RCLONE_CONFIG_PASSWORD="> Config password : "
 ) ELSE (
 	SET RCLONE_CONFIG_PASSWORD=%1
+)
+
+REM If shutdown / hibernate is not passed as argument
+IF [%2] == [] (
+	REM Shutdown?
+	SET /p SHUTDOWN_AFTER_CHECK="> Shutdown after check? [y/n] : "
+	REM Hibernate?
+	SET /p HIBERNATE_AFTER_CHECK="> Hibernate after check? [y/n] : "
 )
 
 CLS
@@ -58,6 +66,26 @@ SETLOCAL
 		@ECHO %date%;%time%;%%A;end>> %RCLONE_LOG_FILE_PATH%
 	)
 ENDLOCAL
+
+REM If "shutdown" is passed as argument
+IF [%2] == [shutdown] (
+	REM Shutdown computer
+	shutdown -s -f
+)
+IF "%SHUTDOWN_AFTER_CHECK%"=="y" (
+	SET SHUTDOWN_AFTER_CHECK=
+	shutdown -s -f
+)
+
+REM If "hibernate" is passed as argument
+IF [%2] == [hibernate] (
+	REM Hibernate computer
+	shutdown -h
+)
+IF "%HIBERNATE_AFTER_CHECK%"=="y" (
+	SET HIBERNATE_AFTER_CHECK=
+	shutdown -h
+)
 
 REM Wait 10 seconds, then exit script
 TIMEOUT 10 | ECHO off

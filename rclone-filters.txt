@@ -10,3 +10,7 @@
 AlbumArt*.jpg
 # rclone log file
 rclone-*-log.txt
+# Cemu emulator
+cemu/shaderCache/precompiled/*
+cemu/mlc01/usr/title/*/
+cemu/log.txt
