@@ -170,7 +170,6 @@ SET RCLONE_REMOTE_PATH=pCloudEncrypted:
 - [Windows File System Proxy](http://www.secfs.net/winfsp/)
 
 ## Todo
-- Shutdown / hibernate computer after sync / check if wanted
 - Add more usefull rclone flags for sync / check / mount commands
   
 ## License
