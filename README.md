@@ -3,6 +3,8 @@
 ## About
 Just my [rclone](https://rclone.org/) Windows batch scripts to backup / sync the second hard drive of my computer to [pCloud](https://www.pcloud.com/) (encrypted).
 
+![](graphs/rclone-backup.png)
+
 ## Usage
 ### 1. Make local source and remote destination identical:
 Example:
