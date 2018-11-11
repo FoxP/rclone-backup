@@ -46,7 +46,7 @@ SET RCLONE_REMOTE_PATH=pCloudEncrypted:
 REM Local directory names to sync, comma separated
 SET RCLONE_DIRECTORIES_TO_SYNC=Backups,Documents,Ebooks,Games,Movies,Music,Pictures,Softwares
 REM Additional rclone flags
-SET RCLONE_ADDITIONAL_FLAGS=--delete-excluded
+SET RCLONE_ADDITIONAL_FLAGS=--delete-excluded --progress --stats-one-line
 ```
 - Edit your [filter file](https://rclone.org/filtering/) : `rclone-filters.txt`
 - Start `rclone-sync.bat` with your rclone config file (`rclone.conf`) password (as argument or not):  
