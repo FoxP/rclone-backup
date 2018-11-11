@@ -28,10 +28,10 @@ SET RCLONE_REMOTE_PATH=pCloudEncrypted:
 REM Local directory names to sync, comma separated
 SET RCLONE_DIRECTORIES_TO_SYNC=Backups,Documents,Ebooks,Games,Movies,Music,Phone,Pictures,Softwares
 REM Additional rclone flags
-SET RCLONE_ADDITIONAL_FLAGS=--delete-excluded
+SET RCLONE_ADDITIONAL_FLAGS=--delete-excluded --progress --stats-one-line
 
 REM Console height / width
-MODE 50,20 | ECHO off
+MODE 80,25 | ECHO off
 REM Console title
 TITLE rclone-sync
 
