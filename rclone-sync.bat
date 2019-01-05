@@ -10,7 +10,7 @@ SET RCLONE_CONFIG_PATH="%~dp0rclone.conf"
 SET RCLONE_LOG_FILE_PATH="%~dp0rclone-sync-log.txt"
 REM Log level : DEBUG|INFO|NOTICE|ERROR (default NOTICE)
 SET RCLONE_LOG_LEVEL=INFO
-REM Read exclude patterns from file
+REM Read filters from file
 SET RCLONE_FILTER_FILE_PATH="%~dp0rclone-filters.txt"
 REM Number of checkers to run in parallel (default 8)
 SET RCLONE_CHECKERS_NUMBER=8
@@ -64,7 +64,7 @@ SETLOCAL
 	FOR %%A IN (%RCLONE_DIRECTORIES_TO_SYNC%) DO (
 		ECHO  - %RCLONE_LOCAL_PATH%%%A -^> %RCLONE_REMOTE_PATH%%%A
 		@ECHO %date%;%time%;%%A;start>> %RCLONE_LOG_FILE_PATH%
-		%RCLONE_EXE_PATH% sync "%RCLONE_LOCAL_PATH%%%A" "%RCLONE_REMOTE_PATH%%%A" --config=%RCLONE_CONFIG_PATH% --exclude-from=%RCLONE_FILTER_FILE_PATH% %RCLONE_ADDITIONAL_FLAGS% --log-file=%RCLONE_LOG_FILE_PATH% --log-level %RCLONE_LOG_LEVEL% --transfers=%RCLONE_FILE_TRANSFERS_NUMBER% --checkers %RCLONE_CHECKERS_NUMBER% --low-level-retries %RCLONE_LOW_LEVEL_RETRIES_NUMBER% --retries %RCLONE_RETRIES_NUMBER% --retries-sleep %RCLONE_RETRIES_SLEEP%
+		%RCLONE_EXE_PATH% sync "%RCLONE_LOCAL_PATH%%%A" "%RCLONE_REMOTE_PATH%%%A" --config=%RCLONE_CONFIG_PATH% --filter-from=%RCLONE_FILTER_FILE_PATH% %RCLONE_ADDITIONAL_FLAGS% --log-file=%RCLONE_LOG_FILE_PATH% --log-level %RCLONE_LOG_LEVEL% --transfers=%RCLONE_FILE_TRANSFERS_NUMBER% --checkers %RCLONE_CHECKERS_NUMBER% --low-level-retries %RCLONE_LOW_LEVEL_RETRIES_NUMBER% --retries %RCLONE_RETRIES_NUMBER% --retries-sleep %RCLONE_RETRIES_SLEEP%
 		@ECHO %date%;%time%;%%A;end>> %RCLONE_LOG_FILE_PATH%
 	)
 ENDLOCAL
